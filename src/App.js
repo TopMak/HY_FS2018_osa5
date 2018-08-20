@@ -1,4 +1,7 @@
 import React from 'react'
+import {createStore} from 'redux'
+
+import counterReducer from './counterReducer'
 
 const Otsikko = (props) => {
   return (
