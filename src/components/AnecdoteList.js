@@ -17,7 +17,7 @@ class AnecdoteList extends React.Component {
     this.unsubscribe()
   }
 
-  //Vote func here
+  //Vote func
 
   addVote = (id) => () => {
     //console.log("vote for: ", id);

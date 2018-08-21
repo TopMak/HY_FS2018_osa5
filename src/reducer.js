@@ -24,15 +24,21 @@ const sortByLikes = (anecdotes) => {
 }
 
 const reducer = (state = initialState, action) => {
-  console.log('state now: ',state)
-  console.log('action', action)
+  // console.log('state now: ',state)
+  // console.log('action', action)
   switch (action.type) {
     case 'VOTE':
       const voteID = action.data.id
       //This statement might be "too clever", and not very intuitive...
       const newAnecdotes = state.map( anecdote => anecdote.id !== voteID ? anecdote : {...anecdote, votes: anecdote.votes + 1} )
-      const newState = sortByLikes(newAnecdotes)
-      return newState
+      const voteAnecdoteState = sortByLikes(newAnecdotes)
+      return voteAnecdoteState
+    case 'CREATE_ANECDOTE':
+      // console.log("create new anecdote");
+      const newAnecdote = asObject(action.data.content)
+      const createAnecdoteState = state.concat(newAnecdote)
+      // console.log(newAnecdote);
+      return createAnecdoteState
     default:
       return state
   }
